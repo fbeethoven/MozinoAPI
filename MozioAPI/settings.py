@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'MozioAPI.wsgi.application'
 # We use a geoDatabase. It could be better to use Postgresql with Postgis extension if I have time.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'geodjango',
         'USER': 'geo',
     }
