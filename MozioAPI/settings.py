@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'MozioAPI.wsgi.application'
 # We use a geoDatabase. It could be better to use Postgresql with Postgis extension if I have time.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'geodjango',
         'USER': 'geo',
     }
@@ -149,5 +149,5 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = [
             os.path.join(PROJECT_ROOT, 'static'),
             ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestManifestStaticFilesStorage"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 django_heroku.settings(locals())
