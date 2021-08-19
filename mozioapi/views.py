@@ -5,9 +5,104 @@ from rest_framework.response import Response
 # POLYGON and Point for GEOjson
 from django.contrib.gis.geos import Polygon, Point
 
+from django.http import JsonResponse
 from .models import provider, area
 from .serializers import providerSerializer, areaSerializer
+    
 
+
+# ----------------------------------
+#  Documenting the API endpoints by hand
+# ----------------------------------
+@api_view(['GET'])
+def MozioAPIDoc(request):
+    api_doc = [{
+        'Endpoint' : '/api/get/all',
+        'method' : 'GET',
+        'body' : None ,
+        'description' : 'Returns all Providers in the database'
+        },
+        {
+        'Endpoint' : '/api/get/id',
+        'method' : 'GET',
+        'body' : None ,
+        'description' : 'Returns the one Provider with the passed id'
+        },
+        {
+        'Endpoint' : '/api/get/create',
+        'method' : 'POST',
+        'body' : {
+            "name": "name",
+            "email": "email@gmail.com",
+            "phone_number": "+48 123 234 234",
+            "language": "language",
+            "currency": "USD"
+            } ,
+        'description' : 'Create a new Provider'
+        },
+        {
+        'Endpoint' : '/api/id/update',
+        'method' : 'PUT',
+        'body' : {
+            "name": "updatedname",
+            "email": "updatedemail@gmail.com",
+            "phone_number": "+48 123 234 234",
+            "language": "language",
+            "currency": "USD"
+            } ,
+        'description' : 'Update information about a Provider on the Database'
+        },
+        {
+        'Endpoint' : '/api/get/delete',
+        'method' : 'DELETE',
+        'body' : None ,
+        'description' : 'Deletes a Provider from the Database'
+        },
+        {
+        'Endpoint' : '/api/id/polygon/all',
+        'method' : 'GET',
+        'body' : None ,
+        'description' : 'Returns all Service Areas that a Provider has in the Database'
+        },
+        {
+        'Endpoint' : '/api/id/polygon/pk',
+        'method' : 'GET',
+        'body' : None ,
+        'description' : 'Returns on Service Area created by a Provider'
+        },
+        {
+        'Endpoint' : '/api/id/polygon/create',
+        'method' : 'POST',
+        'body' : {
+            "name" : "name of Service Area",
+            "price" : "Price in the currency of the provider",
+            "area" :  "geojson of the Polygon. Can easily be obtain in geojson.io for e.g."},
+        'description' : 'Creates a new Service Area by the Provider with passed id'
+        },
+        {
+        'Endpoint' : '/api/id/polygon/pk/update',
+        'method' : 'PUT',
+        'body' : {
+            "name" : "name of Service Area",
+            "price" : "Price in the currency of the provider",
+            "area" :  "geojson of the Polygon. Can easily be obtain in geojson.io for e.g."
+            } ,
+        'description' : 'Updates a Service Area already on the Database'
+        },
+        {
+        'Endpoint' : '/api/id/polygon/pk/delete',
+        'method' : 'DELETE',
+        'body' : None ,
+        'description' : 'Deteles a Service Area from the Database'
+        },
+        {
+        'Endpoint' : '/api/query?lat=000000&lng=00000',
+        'method' : 'GET',
+        'body' : None ,
+        'description' : 'Returns all Service Areas that contain the Point of latitude and longitud specified'
+        }
+        ]
+    return Response(api_doc)
 
 # ----------------------------------
 # END POINTS FOR PROVIDERS:
