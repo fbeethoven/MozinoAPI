@@ -5,7 +5,6 @@ from rest_framework.response import Response
 # POLYGON and Point for GEOjson
 from django.contrib.gis.geos import Polygon, Point
 
-from django.http import JsonResponse
 from .models import provider, area
 from .serializers import providerSerializer, areaSerializer
     
