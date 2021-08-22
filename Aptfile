@@ -1,2 +1,3 @@
+proj-bin
 gdal-bin
-libsqlite3-mod-spatialite
+libgdal-dev
