@@ -27,7 +27,7 @@ def MozioAPIDoc(request):
         'description' : 'Returns the one Provider with the passed id'
         },
         {
-        'Endpoint' : '/api/get/create',
+        'Endpoint' : '/api/create',
         'method' : 'POST',
         'body' : {
             "name": "name",
